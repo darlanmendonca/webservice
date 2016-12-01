@@ -1,5 +1,7 @@
 import Users from './users.model.js'
 
+const privateFields = '-password -__v'
+
 module.exports = {
   list,
   get,
@@ -9,13 +11,13 @@ module.exports = {
 
 function list(req, res) {
   Users
-    .find({active: {$ne: false}})
+    .find({active: {$ne: false}}, privateFields)
     .then(users => res.json(users))
 }
 
 function get(req, res) {
   Users
-    .findById(req.params.id)
+    .findById(req.params.id, privateFields)
     .then(user => res.json(user))
 }
 
