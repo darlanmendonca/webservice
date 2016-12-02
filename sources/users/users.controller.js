@@ -1,4 +1,6 @@
 import Users from './users.model.js'
+import encode from '../encode/encode.helper.js'
+import jwt from 'jsonwebtoken'
 
 const privateFields = '-password -__v'
 
@@ -7,6 +9,7 @@ module.exports = {
   get,
   create,
   disable,
+  authenticate,
 }
 
 function list(req, res) {
@@ -36,4 +39,26 @@ function disable(req, res) {
   Users
     .findByIdAndUpdate(req.params.id, {$set: {active: false}})
     .then(() => res.json({message: 'deleted'}))
+}
+
+function authenticate(req, res) {
+  const email = req.body.email
+  const password = encode.md5(req.body.password)
+  const active = true
+
+  Users
+    .findOne({email, password, active})
+    .then(generateToken)
+
+  function generateToken(user) {
+    if (!user) {
+      return res
+        .status(401)
+        .json({message: 'invalid credentials'})
+    }
+
+    const id = user.id
+    const token = jwt.sign({id, email}, 'mewhcvdf')
+    res.json({token})
+  }
 }

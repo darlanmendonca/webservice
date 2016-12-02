@@ -7,6 +7,10 @@ const router = Router()
 router.param('id', validate.id)
 
 router
+  .route('/users/authenticate')
+  .post(users.authenticate)
+
+router
   .route('/users')
   .get(users.list)
   .post(users.create)
