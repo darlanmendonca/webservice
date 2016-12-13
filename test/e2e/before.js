@@ -1,31 +1,17 @@
-// import config from '../../config'
-// import helper from '../helper.js'
+import Users from '../../sources/users/users.model.js'
+import mock from '../../sources/users/users.mock.js'
+// import {secret, token} from '../../sources/config.js'
+// import jwt from 'jsonwebtoken'
 
 before(disableConsoleInfo)
+before(mockUser)
 
 function disableConsoleInfo() {
   console.info = function() {}
 }
-// before(mongooseConnect)
-// before(createUser)
 
-// function mongooseConnect(done){
-//   let mongoose = require('mongoose')
-//   mongoose.connect(config.database.url, () => done())
-// }
+function mockUser() {
+  const user = new Users(mock)
 
-// function createUser(done) {
-//   let Users = require('../../app/users/users.model.js')
-//   let user = new Users(helper.user)
-//   let jwt = require('jsonwebtoken')
-
-//   user
-//     .save()
-//     .then(function(user) {
-//       helper.user._id = user._id
-//       helper.user.token = jwt.sign(user, config.secret, config.token)
-//       helper.user.invalidToken = helper.user.token.replace(/^.{2}/, 'dd')
-//       helper.user.invalidPassword = helper.user.password.replace(/^.{2}/, 'dd')
-//       return done()
-//     })
-// }
+  return user.save()
+}

@@ -5,6 +5,7 @@ import router from './router.js'
 import {urlencoded, json} from 'body-parser'
 import gzip from 'compression'
 import {port, database} from './config.js'
+console.log(database)
 
 const webservice = express()
 
