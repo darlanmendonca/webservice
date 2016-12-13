@@ -45,10 +45,10 @@ function disable(req, res) {
 function authenticate(req, res) {
   const email = req.body.email
   const password = encode.md5(req.body.password)
-  const active = true
+  // const active = true
 
   Users
-    .findOne({email, password, active})
+    .findOne({email, password})
     .then(generateToken)
 
   function generateToken(user) {
