@@ -3,8 +3,6 @@ import encode from '../encode/encode.helper.js'
 import jwt from 'jsonwebtoken'
 import {secret, token as tokenSets} from '../config.js'
 
-const privateFields = '-password -__v'
-
 module.exports = {
   list,
   get,
@@ -15,13 +13,13 @@ module.exports = {
 
 function list(req, res) {
   Users
-    .find({active: {$ne: false}}, privateFields)
+    .find({active: {$ne: false}})
     .then(users => res.json(users))
 }
 
 function get(req, res) {
   Users
-    .findById(req.params.id, privateFields)
+    .findById(req.params.id)
     .then(user => res.json(user))
 }
 

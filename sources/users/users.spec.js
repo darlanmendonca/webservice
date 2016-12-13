@@ -1,10 +1,13 @@
 import webservice from '../index.js'
 import chai from 'chai'
 import chaiHttp from 'chai-http'
+import chaiThings from 'chai-things'
 import {request, expect} from 'chai'
 import user from './users.mock.js'
 
-chai.use(chaiHttp)
+chai
+  .use(chaiHttp)
+  .use(chaiThings)
 
 describe('Users', () => {
   describe('.authenticate - POST /users/authenticate', () => {
@@ -116,6 +119,70 @@ describe('Users', () => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
           expect(res.body).to.be.an('array')
+          done()
+        })
+    })
+
+    it('dont expose private fields', (done) => {
+      request(webservice)
+        .get('/users')
+        .set('token', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('array')
+          expect(res.body).all.not.have.property('password')
+          expect(res.body).all.not.have.property('__v')
+          done()
+        })
+    })
+  })
+
+  describe('.get - GET /users/:id', () => {
+    it('required token', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'required token')
+          done()
+        })
+    })
+
+    it('invalid token', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
+        .set('token', user.invalidToken)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'invalid token')
+          done()
+        })
+    })
+
+    it('get user', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
+        .set('token', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('object')
+          done()
+        })
+    })
+
+    it('dont expose private fields', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
+        .set('token', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.not.have.property('password')
+          expect(res.body).to.not.have.property('__v')
           done()
         })
     })

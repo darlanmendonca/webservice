@@ -11,5 +11,11 @@ function disableConsoleInfo() {
 function mockUser() {
   const user = new Users(mock)
 
-  return user.save()
+  return user
+    .save()
+    .then(setUserId)
+
+  function setUserId(user) {
+    mock.id = user._id
+  }
 }
