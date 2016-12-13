@@ -1,7 +1,5 @@
 import Users from '../../sources/users/users.model.js'
 import mock from '../../sources/users/users.mock.js'
-// import {secret, token} from '../../sources/config.js'
-// import jwt from 'jsonwebtoken'
 
 before(disableConsoleInfo)
 before(mockUser)
