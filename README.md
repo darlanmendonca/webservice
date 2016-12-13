@@ -2,6 +2,7 @@
 
 example of webservice, featuring:
 
-- es6
+- express 4
+- writed in es6
 - entity architecture
 - authentication with jsonwebtoken

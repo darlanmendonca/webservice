@@ -2,14 +2,16 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bluebird from 'bluebird'
 import router from './router.js'
-import bodyParser from 'body-parser'
+import {urlencoded, json} from 'body-parser'
+import gzip from 'compression'
 
 const server = express()
 const port = process.env.PORT || 3000
 
 server
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
+  .use(urlencoded({extended: true}))
+  .use(json())
+  .use(gzip())
   .use(router)
 
 mongoose.Promise = bluebird
