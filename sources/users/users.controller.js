@@ -1,6 +1,7 @@
 import Users from './users.model.js'
 import encode from '../encode/encode.helper.js'
 import jwt from 'jsonwebtoken'
+import {secret} from '../config.js'
 
 const privateFields = '-password -__v'
 
@@ -58,7 +59,7 @@ function authenticate(req, res) {
     }
 
     const id = user.id
-    const token = jwt.sign({id, email}, 'mewhcvdf')
+    const token = jwt.sign({id, email}, secret)
     res.json({token})
   }
 }
