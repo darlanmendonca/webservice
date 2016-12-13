@@ -24,7 +24,7 @@ const configs = {
     token: {
       expiresIn: '24h',
     },
-  }
+  },
 }
 
 const env = shellArguments.env || process.env.NODE_ENV || 'production'

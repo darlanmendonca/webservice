@@ -23,7 +23,7 @@ mongoose.Promise = bluebird
 mongoose
   .connect(`mongodb://localhost/${database}`)
   .then(() => webservice.listen(port, () => console.info(`localhost:${port}`)))
-  .catch(err => console.error('error on connect db'))
+  .catch(() => console.error('error on connect db'))
 
-module.exports = webservice;
+module.exports = webservice
 

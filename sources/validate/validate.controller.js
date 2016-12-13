@@ -19,8 +19,8 @@ function id(req, res, next, value) {
 }
 
 function token(req, res, next) {
-  const token = req.headers.token 
-    || req.body.token 
+  const token = req.headers.token
+    || req.body.token
     || req.query.token
 
   if (!token) {
@@ -41,5 +41,4 @@ function token(req, res, next) {
     req.token = decoded
     next()
   })
-
 }

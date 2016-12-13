@@ -6,7 +6,8 @@
   "scripts": {
     "test": "scripts/test.sh",
     "start": "scripts/start.sh",
-    "dev": "scripts/dev.sh"
+    "dev": "scripts/dev.sh",
+    "lint": "scripts/lint.sh"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "babel-watch": "^2.0.3",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "eslint": "^3.12.1",
     "faker": "^3.1.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0"

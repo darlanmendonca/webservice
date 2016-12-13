@@ -1,5 +1,5 @@
 import webservice from '../index.js'
-import chai from 'chai';
+import chai from 'chai'
 import chaiHttp from 'chai-http'
 import {request, expect} from 'chai'
 import user from './users.mock.js'
