@@ -5,10 +5,10 @@ import router from './router.js'
 import {urlencoded, json} from 'body-parser'
 import gzip from 'compression'
 
-const server = express()
+const webservice = express()
 const port = process.env.PORT || 3000
 
-server
+webservice
   .use(urlencoded({extended: true}))
   .use(json())
   .use(gzip())
@@ -18,8 +18,10 @@ mongoose.Promise = bluebird
 
 mongoose.connect('localhost/webservice', err => {
   if (err) {
-    return console.log('error on connect db')
+    return console.error('error on connect db')
   }
-  server.listen(port, () => console.log(`localhost:${port}`))    
+  webservice.listen(port, () => console.info(`localhost:${port}`))    
 })
+
+module.exports = webservice;
 

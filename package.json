@@ -4,9 +4,9 @@
   "description": "atividade de webservice",
   "main": "sources/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/babel-cli/bin/babel-node.js sources/app.js",
-    "dev": "./node_modules/babel-watch/babel-watch.js sources/app.js"
+    "test": "scripts/test.sh",
+    "start": "scripts/start.sh",
+    "dev": "scripts/dev.sh"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,11 @@
     "valid-objectid": "0.0.2"
   },
   "devDependencies": {
-    "babel-watch": "^2.0.3"
+    "babel-watch": "^2.0.3",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "faker": "^3.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
   }
 }
