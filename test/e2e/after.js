@@ -1,7 +1,7 @@
-import Users from '../../sources/users/users.model.js'
+import mongoose from 'mongoose'
 
-after(removeUsers)
+after(dropDatabase)
 
-function removeUsers() {
-  return Users.remove({})
+function dropDatabase() {
+  mongoose.connection.dropDatabase()
 }
