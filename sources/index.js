@@ -7,6 +7,7 @@ import multer from 'multer'
 import {urlencoded, json} from 'body-parser'
 import gzip from 'compression'
 import {port, database} from './config.js'
+import filter from './filter/filter.helper.js'
 
 const webservice = express()
 
@@ -16,6 +17,7 @@ webservice
   .use(multer().array())
   .use(urlencoded({extended: true}))
   .use(json())
+  .use(filter)
   .use(router)
 
 mongoose.Promise = bluebird

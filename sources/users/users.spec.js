@@ -123,6 +123,19 @@ describe('Users', () => {
         })
     })
 
+    it('list users with filters', (done) => {
+      request(webservice)
+        .get('/users')
+        .set('filters', 'email,firstname')
+        .set('token', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('array')
+          done()
+        })
+    })
+
     it('dont expose private fields', (done) => {
       request(webservice)
         .get('/users')
@@ -170,6 +183,22 @@ describe('Users', () => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
           expect(res.body).to.be.an('object')
+          done()
+        })
+    })
+
+    it('get user with filters', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
+        .set('token', user.token)
+        .set('filters', 'email,firstname,password')
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('object')
+          expect(res.body).to.have.property('email')
+          expect(res.body).to.have.property('firstname')
+          expect(res.body).to.not.have.property('password')
           done()
         })
     })
