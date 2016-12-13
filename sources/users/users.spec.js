@@ -59,4 +59,65 @@ describe('Users', () => {
         })
     })
   })
+
+  describe('.list - GET /users', () => {
+    it('required token', (done) => {
+      request(webservice)
+        .get('/users')
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'required token')
+          done()
+        })
+    })
+
+    it('invalid token from query', (done) => {
+      request(webservice)
+        .get('/users')
+        .query({token: user.invalidToken})
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'invalid token')
+          done()
+        })
+    })
+
+    it('invalid token from body', (done) => {
+      request(webservice)
+        .get('/users')
+        .field('token', user.invalidToken)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'invalid token')
+          done()
+        })
+    })
+
+    it('invalid token from header', (done) => {
+      request(webservice)
+        .get('/users')
+        .set('token', user.invalidToken)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(401)
+          expect(res.body).to.have.property('message', 'invalid token')
+          done()
+        })
+    })
+
+    it('list users', (done) => {
+      request(webservice)
+        .get('/users')
+        .set('token', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('array')
+          done()
+        })
+    })
+  })
 })

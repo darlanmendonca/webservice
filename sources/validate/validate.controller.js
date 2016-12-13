@@ -1,5 +1,6 @@
 import {isValid as isValidId} from 'valid-objectid'
 import jwt from 'jsonwebtoken'
+import {secret} from '../config.js'
 
 module.exports = {
   id,
@@ -22,7 +23,14 @@ function token(req, res, next) {
     || req.body.token 
     || req.query.token
 
-  jwt.verify(token, 'mewhcvdf', (err, decoded) => {
+  if (!token) {
+    const message = 'required token'
+    return res
+      .status(401)
+      .json({message})
+  }
+
+  jwt.verify(token, secret, (err, decoded) => {
     if (err) {
       const message = 'invalid token'
       return res
@@ -30,7 +38,7 @@ function token(req, res, next) {
         .json({message})
     }
 
-    req.decoded = decoded
+    req.token = decoded
     next()
   })
 
