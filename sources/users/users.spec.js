@@ -1,4 +1,4 @@
-import webservice from '../app.js'
+import webservice from '../index.js'
 import chai from 'chai';
 import chaiHttp from 'chai-http'
 import {request, expect} from 'chai'

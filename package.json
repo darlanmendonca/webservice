@@ -2,7 +2,7 @@
   "name": "webservice",
   "private": true,
   "description": "atividade de webservice",
-  "main": "sources/app.js",
+  "main": "sources/index.js",
   "scripts": {
     "test": "scripts/test.sh",
     "start": "scripts/start.sh",
@@ -29,6 +29,7 @@
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.7.0",
     "mpromise": "^0.5.5",
+    "shell-arguments": "^1.2.3",
     "valid-objectid": "0.0.2"
   },
   "devDependencies": {

@@ -1,9 +1,11 @@
 // import config from '../../config'
 // import helper from '../helper.js'
 
-before(() => {
+before(disableConsoleInfo)
+
+function disableConsoleInfo() {
   console.info = function() {}
-})
+}
 // before(mongooseConnect)
 // before(createUser)
 

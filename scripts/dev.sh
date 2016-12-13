@@ -2,4 +2,4 @@
 
 set -e
 
-./node_modules/babel-watch/babel-watch.js sources/app.js
+./node_modules/babel-watch/babel-watch.js sources/index.js
