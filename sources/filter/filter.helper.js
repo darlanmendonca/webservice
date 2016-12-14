@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
         ? Object.keys(data[0].toJSON ? data[0].toJSON() : data[0]).join(',')
         : Object.keys(data).join(', ')
 
-      res.header('Allow-fields', fields)
+      res.header('Allow-filters', fields)
     }
 
     const filtered = Array.isArray(data)
@@ -25,7 +25,7 @@ module.exports = function (req, res, next) {
   }
 
   function filter(data) {
-    const {filters} = req.headers
+    const filters = req.headers.filters
     if (filters) {
       const fields = filters
         .replace(/\s+/, '')
