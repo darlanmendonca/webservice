@@ -9,6 +9,14 @@ module.exports = function (req, res, next) {
       ? data.toJSON()
       : data
 
+    if (data) {
+      const fields = Array.isArray(data)
+        ? Object.keys(data[0].toJSON ? data[0].toJSON() : data[0]).join(',')
+        : Object.keys(data).join(',')
+
+      res.header('Allowing-fields', fields)
+    }
+
     const filtered = Array.isArray(data)
       ? data.map(item => filter(item))
       : filter(data)

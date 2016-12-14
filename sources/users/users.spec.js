@@ -180,6 +180,7 @@ describe('Users', () => {
         .get(`/users/${user.id}`)
         .set('token', user.token)
         .end((err, res) => {
+          console.log(res.headers)
           expect(res).to.be.json
           expect(res).to.have.status(200)
           expect(res.body).to.be.an('object')
