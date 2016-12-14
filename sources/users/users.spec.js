@@ -123,7 +123,7 @@ describe('Users', () => {
         })
     })
 
-    it('list users with filters', (done) => {
+    it('filters', (done) => {
       request(webservice)
         .get('/users')
         .set('filters', 'email,firstname')
@@ -136,7 +136,7 @@ describe('Users', () => {
         })
     })
 
-    it('dont expose private fields', (done) => {
+    it('private fields', (done) => {
       request(webservice)
         .get('/users')
         .set('token', user.token)
@@ -187,7 +187,7 @@ describe('Users', () => {
         })
     })
 
-    it('get user with filters', (done) => {
+    it('filters', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
         .set('token', user.token)
@@ -203,7 +203,7 @@ describe('Users', () => {
         })
     })
 
-    it('dont expose private fields', (done) => {
+    it('private fields', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
         .set('token', user.token)
