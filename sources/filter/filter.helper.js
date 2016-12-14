@@ -12,9 +12,9 @@ module.exports = function (req, res, next) {
     if (data) {
       const fields = Array.isArray(data)
         ? Object.keys(data[0].toJSON ? data[0].toJSON() : data[0]).join(',')
-        : Object.keys(data).join(',')
+        : Object.keys(data).join(', ')
 
-      res.header('Allowing-fields', fields)
+      res.header('Allow-fields', fields)
     }
 
     const filtered = Array.isArray(data)
