@@ -132,6 +132,10 @@ describe('Users', () => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
           expect(res.body).to.be.an('array')
+          expect(res.body).all.have.property('email')
+          expect(res.body).all.have.property('firstname')
+          expect(res.body).all.not.have.property('password')
+          expect(res.body).all.not.have.property('lastname')
           done()
         })
     })
