@@ -17,9 +17,17 @@ function list(req, res) {
     .then(users => res.json(users))
 }
 
+// function getById(req, res) {
+//   Users
+//     .findById(req.params.id)
+//     .then(user => res.json(user))
+// }
+
 function get(req, res) {
+  const username = req.params.username
+
   Users
-    .findById(req.params.id)
+    .findOne({username})
     .then(user => res.json(user))
 }
 
@@ -35,8 +43,11 @@ function create(req, res) {
 }
 
 function disable(req, res) {
+  const username = req.params.username
+
   Users
-    .findByIdAndUpdate(req.params.id, {$set: {active: false}})
+    .findOneAndUpdate({username}, {$set: {active: false}})
+    // .findByIdAndUpdate(req.params.id, {$set: {active: false}})
     .then(() => res.json({message: 'deleted'}))
 }
 

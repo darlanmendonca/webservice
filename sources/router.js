@@ -18,7 +18,7 @@ router
   .post(users.create)
 
 router
-  .route('/users/:id')
+  .route('/users/:username')
   .get(users.get)
   .delete(users.disable)
 

@@ -30,8 +30,16 @@ function list(req, res) {
   });
 }
 
+// function getById(req, res) {
+//   Users
+//     .findById(req.params.id)
+//     .then(user => res.json(user))
+// }
+
 function get(req, res) {
-  _usersModel2.default.findById(req.params.id).then(function (user) {
+  var username = req.params.username;
+
+  _usersModel2.default.findOne({ username: username }).then(function (user) {
     return res.json(user);
   });
 }
@@ -47,7 +55,11 @@ function create(req, res) {
 }
 
 function disable(req, res) {
-  _usersModel2.default.findByIdAndUpdate(req.params.id, { $set: { active: false } }).then(function () {
+  var username = req.params.username;
+
+  _usersModel2.default.findOneAndUpdate({ username: username }, { $set: { active: false } })
+  // .findByIdAndUpdate(req.params.id, {$set: {active: false}})
+  .then(function () {
     return res.json({ message: 'deleted' });
   });
 }

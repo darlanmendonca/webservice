@@ -155,10 +155,10 @@ describe('Users', () => {
     })
   })
 
-  describe('.get - GET /users/:id', () => {
+  describe('.get - GET /users/:username', () => {
     it('required token', (done) => {
       request(webservice)
-        .get(`/users/${user.id}`)
+        .get(`/users/${user.username}`)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(401)
@@ -169,7 +169,7 @@ describe('Users', () => {
 
     it('invalid token', (done) => {
       request(webservice)
-        .get(`/users/${user.id}`)
+        .get(`/users/${user.username}`)
         .set('authorization', user.invalidToken)
         .end((err, res) => {
           expect(res).to.be.json
@@ -181,7 +181,7 @@ describe('Users', () => {
 
     it('get user', (done) => {
       request(webservice)
-        .get(`/users/${user.id}`)
+        .get(`/users/${user.username}`)
         .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
@@ -193,7 +193,7 @@ describe('Users', () => {
 
     it('filters', (done) => {
       request(webservice)
-        .get(`/users/${user.id}`)
+        .get(`/users/${user.username}`)
         .set('authorization', user.token)
         .set('filters', 'email,firstname,password')
         .end((err, res) => {
@@ -209,7 +209,7 @@ describe('Users', () => {
 
     it('private fields', (done) => {
       request(webservice)
-        .get(`/users/${user.id}`)
+        .get(`/users/${user.username}`)
         .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json

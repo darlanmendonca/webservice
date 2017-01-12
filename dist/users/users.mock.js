@@ -9,6 +9,7 @@ var _config = require('../config.js');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mock = {
+  username: 'johnsnow',
   firstname: 'John',
   lastname: 'Snow',
   email: 'iknownothing@snow.com',

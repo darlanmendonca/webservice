@@ -15,6 +15,7 @@ var _encodeHelper2 = _interopRequireDefault(_encodeHelper);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var schema = new _mongoose2.default.Schema({
+  username: { type: String, trim: true, lowercase: true, required: true, unique: true },
   firstname: { type: String, trim: true, required: true },
   lastname: { type: String, trim: true, required: true },
   email: { type: String, trim: true, required: true, unique: true },

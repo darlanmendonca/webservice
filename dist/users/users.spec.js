@@ -135,9 +135,9 @@ describe('Users', function () {
     });
   });
 
-  describe('.get - GET /users/:id', function () {
+  describe('.get - GET /users/:username', function () {
     it('required token', function (done) {
-      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).end(function (err, res) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(401);
         (0, _chai.expect)(res.body).to.have.property('message', 'required token');
@@ -146,7 +146,7 @@ describe('Users', function () {
     });
 
     it('invalid token', function (done) {
-      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.invalidToken).end(function (err, res) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.invalidToken).end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(401);
         (0, _chai.expect)(res.body).to.have.property('message', 'invalid token');
@@ -155,7 +155,8 @@ describe('Users', function () {
     });
 
     it('get user', function (done) {
-      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.token).end(function (err, res) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.token).end(function (err, res) {
+        console.log('/users/' + _usersMock2.default.username, res.body);
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(200);
         (0, _chai.expect)(res.body).to.be.an('object');
@@ -164,7 +165,7 @@ describe('Users', function () {
     });
 
     it('filters', function (done) {
-      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.token).set('filters', 'email,firstname,password').end(function (err, res) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.token).set('filters', 'email,firstname,password').end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(200);
         (0, _chai.expect)(res.body).to.be.an('object');
@@ -176,7 +177,7 @@ describe('Users', function () {
     });
 
     it('private fields', function (done) {
-      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.token).end(function (err, res) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.token).end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(200);
         (0, _chai.expect)(res.body).to.not.have.property('password');

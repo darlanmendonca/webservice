@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import {secret, token as tokenSets} from '../config.js'
 
 const mock = {
+  username: 'johnsnow',
   firstname: 'John',
   lastname: 'Snow',
   email: 'iknownothing@snow.com',
