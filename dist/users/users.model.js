@@ -19,7 +19,7 @@ var schema = new _mongoose2.default.Schema({
   firstname: { type: String, trim: true, required: true },
   lastname: { type: String, trim: true, required: true },
   email: { type: String, trim: true, required: true, unique: true },
-  password: { type: String, required: true, set: _encodeHelper2.default.md5, private: true },
+  password: { type: String, set: _encodeHelper2.default.md5, private: true },
   active: { type: Boolean, default: true },
   __v: { type: Number, private: true }
 });
