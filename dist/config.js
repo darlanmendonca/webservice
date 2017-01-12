@@ -16,7 +16,7 @@ var configs = {
     }
   },
   development: {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4000,
     database: 'webservice',
     secret: 'kljj4hhsdih.8j32h',
     token: {
@@ -24,7 +24,7 @@ var configs = {
     }
   },
   production: {
-    port: 3000,
+    port: 4000,
     database: 'webservice',
     secret: 'tkta0kjxjkur3sor',
     token: {
