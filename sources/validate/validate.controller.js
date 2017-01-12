@@ -19,9 +19,9 @@ function id(req, res, next, value) {
 }
 
 function token(req, res, next) {
-  const token = req.headers.token
-    || req.body.token
-    || req.query.token
+  const token = req.headers.authorization
+    || req.body.authorization
+    || req.query.authorization
 
   if (!token) {
     const message = 'required token'
