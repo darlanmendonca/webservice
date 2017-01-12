@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
   next();
 
   function fielterFields(data) {
-    data = data.toJSON ? data.toJSON() : data;
+    data = data && data.toJSON ? data.toJSON() : data;
 
     if (data) {
       var fields = Array.isArray(data) ? Object.keys(data[0].toJSON ? data[0].toJSON() : data[0]).join(',') : Object.keys(data).join(', ');

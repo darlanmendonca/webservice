@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
   next()
 
   function fielterFields(data) {
-    data = data.toJSON
+    data = data && data.toJSON
       ? data.toJSON()
       : data
 

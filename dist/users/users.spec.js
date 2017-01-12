@@ -154,9 +154,18 @@ describe('Users', function () {
       });
     });
 
+    it('user not found', function (done) {
+      (0, _chai.request)(_index2.default).get('/users/loremipsum').set('authorization', _usersMock2.default.token).end(function (err, res) {
+        (0, _chai.expect)(res).to.be.json;
+        // expect(res).to.have.status(204)
+        (0, _chai.expect)(res).to.have.status(200);
+        (0, _chai.expect)(res.body).to.be.null;
+        done();
+      });
+    });
+
     it('get user', function (done) {
       (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.token).end(function (err, res) {
-        console.log('/users/' + _usersMock2.default.username, res.body);
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(200);
         (0, _chai.expect)(res.body).to.be.an('object');
