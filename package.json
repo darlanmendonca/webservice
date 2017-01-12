@@ -1,6 +1,7 @@
 {
   "name": "webservice",
   "private": true,
+  "version": "0.0.1",
   "description": "atividade de webservice",
   "main": "sources/index.js",
   "scripts": {
