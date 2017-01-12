@@ -25,7 +25,7 @@ function id(req, res, next, value) {
 }
 
 function token(req, res, next) {
-  var token = req.headers.token || req.body.token || req.query.token;
+  var token = req.headers.authorization || req.body.authorization || req.query.authorization;
 
   if (!token) {
     var message = 'required token';

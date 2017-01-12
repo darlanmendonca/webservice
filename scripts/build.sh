@@ -2,4 +2,4 @@
 
 set -e
 
-./node_modules/babel-cli/bin/babel.js sources -d dist
+./node_modules/babel-cli/bin/babel.js sources -d dist --quiet

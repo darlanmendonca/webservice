@@ -78,7 +78,7 @@ describe('Users', () => {
     it('invalid token from query', (done) => {
       request(webservice)
         .get('/users')
-        .query({token: user.invalidToken})
+        .query({authorization: user.invalidToken})
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(401)
@@ -90,7 +90,7 @@ describe('Users', () => {
     it('invalid token from body', (done) => {
       request(webservice)
         .get('/users')
-        .field('token', user.invalidToken)
+        .field('authorization', user.invalidToken)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(401)
@@ -102,7 +102,7 @@ describe('Users', () => {
     it('invalid token from header', (done) => {
       request(webservice)
         .get('/users')
-        .set('token', user.invalidToken)
+        .set('authorization', user.invalidToken)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(401)
@@ -114,7 +114,7 @@ describe('Users', () => {
     it('list users', (done) => {
       request(webservice)
         .get('/users')
-        .set('token', user.token)
+        .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
@@ -127,7 +127,7 @@ describe('Users', () => {
       request(webservice)
         .get('/users')
         .set('filters', 'email,firstname')
-        .set('token', user.token)
+        .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
@@ -143,7 +143,7 @@ describe('Users', () => {
     it('private fields', (done) => {
       request(webservice)
         .get('/users')
-        .set('token', user.token)
+        .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
@@ -170,7 +170,7 @@ describe('Users', () => {
     it('invalid token', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
-        .set('token', user.invalidToken)
+        .set('authorization', user.invalidToken)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(401)
@@ -182,7 +182,7 @@ describe('Users', () => {
     it('get user', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
-        .set('token', user.token)
+        .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
@@ -194,7 +194,7 @@ describe('Users', () => {
     it('filters', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
-        .set('token', user.token)
+        .set('authorization', user.token)
         .set('filters', 'email,firstname,password')
         .end((err, res) => {
           expect(res).to.be.json
@@ -210,7 +210,7 @@ describe('Users', () => {
     it('private fields', (done) => {
       request(webservice)
         .get(`/users/${user.id}`)
-        .set('token', user.token)
+        .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
           expect(res).to.have.status(200)
