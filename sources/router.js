@@ -10,7 +10,7 @@ router
 
 router.use(validate.token)
 
-router.param('id', validate.id)
+// router.param('id', validate.id)
 
 router
   .route('/users')
@@ -18,7 +18,7 @@ router
   .post(users.create)
 
 router
-  .route('/users/:username')
+  .route('/users/:id')
   .get(users.get)
   .delete(users.disable)
 

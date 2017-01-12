@@ -18,10 +18,10 @@ router.route('/users/authenticate').post(_usersController2.default.authenticate)
 
 router.use(_validateController2.default.token);
 
-router.param('id', _validateController2.default.id);
+// router.param('id', validate.id)
 
 router.route('/users').get(_usersController2.default.list).post(_usersController2.default.create);
 
-router.route('/users/:username').get(_usersController2.default.get).delete(_usersController2.default.disable);
+router.route('/users/:id').get(_usersController2.default.get).delete(_usersController2.default.disable);
 
 module.exports = router;

@@ -155,7 +155,7 @@ describe('Users', () => {
     })
   })
 
-  describe('.get - GET /users/:username', () => {
+  describe('.get - GET /users/:id', () => {
     it('required token', (done) => {
       request(webservice)
         .get(`/users/${user.username}`)
@@ -192,9 +192,21 @@ describe('Users', () => {
         })
     })
 
-    it('get user', (done) => {
+    it('get by username', (done) => {
       request(webservice)
         .get(`/users/${user.username}`)
+        .set('authorization', user.token)
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('object')
+          done()
+        })
+    })
+
+    it('get by id', (done) => {
+      request(webservice)
+        .get(`/users/${user.id}`)
         .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json

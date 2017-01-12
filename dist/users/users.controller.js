@@ -12,6 +12,8 @@ var _jsonwebtoken = require('jsonwebtoken');
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
+var _validObjectid = require('valid-objectid');
+
 var _config = require('../config.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30,16 +32,12 @@ function list(req, res) {
   });
 }
 
-// function getById(req, res) {
-//   Users
-//     .findById(req.params.id)
-//     .then(user => res.json(user))
-// }
-
 function get(req, res) {
-  var username = req.params.username;
+  var username = req.params.id;
 
-  _usersModel2.default.findOne({ username: username }).then(function (user) {
+  var query = (0, _validObjectid.isValid)(req.params.id) ? _usersModel2.default.findById(req.params.id) : _usersModel2.default.findOne({ username: username });
+
+  query.then(function (user) {
     return res.json(user);
   });
 }

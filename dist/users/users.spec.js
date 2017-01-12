@@ -135,7 +135,7 @@ describe('Users', function () {
     });
   });
 
-  describe('.get - GET /users/:username', function () {
+  describe('.get - GET /users/:id', function () {
     it('required token', function (done) {
       (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
@@ -164,8 +164,17 @@ describe('Users', function () {
       });
     });
 
-    it('get user', function (done) {
+    it('get by username', function (done) {
       (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.username).set('authorization', _usersMock2.default.token).end(function (err, res) {
+        (0, _chai.expect)(res).to.be.json;
+        (0, _chai.expect)(res).to.have.status(200);
+        (0, _chai.expect)(res.body).to.be.an('object');
+        done();
+      });
+    });
+
+    it('get by id', function (done) {
+      (0, _chai.request)(_index2.default).get('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.token).end(function (err, res) {
         (0, _chai.expect)(res).to.be.json;
         (0, _chai.expect)(res).to.have.status(200);
         (0, _chai.expect)(res.body).to.be.an('object');

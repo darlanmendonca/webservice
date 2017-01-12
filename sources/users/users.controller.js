@@ -1,6 +1,7 @@
 import Users from './users.model.js'
 import encode from '../encode/encode.helper.js'
 import jwt from 'jsonwebtoken'
+import {isValid as isValidId} from 'valid-objectid'
 import {secret, token as tokenSets} from '../config.js'
 
 module.exports = {
@@ -17,18 +18,15 @@ function list(req, res) {
     .then(users => res.json(users))
 }
 
-// function getById(req, res) {
-//   Users
-//     .findById(req.params.id)
-//     .then(user => res.json(user))
-// }
-
 function get(req, res) {
-  const username = req.params.username
+  const username = req.params.id
 
-  Users
-    .findOne({username})
-    .then(user => res.json(user))
+  const query = isValidId(req.params.id)
+    ? Users.findById(req.params.id)
+    : Users.findOne({username})
+
+  query.then(user => res.json(user))
+
 }
 
 function create(req, res) {
