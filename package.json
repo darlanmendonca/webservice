@@ -5,7 +5,7 @@
   "description": "atividade de webservice",
   "main": "dist/index.js",
   "scripts": {
-    "pretest": "scripts/lint.sh",
+    "pretest": "scripts/lint.sh && scripts/build.sh",
     "test": "scripts/test.sh",
     "lint": "scripts/lint.sh",
     "start": "scripts/start.sh",
