@@ -9,7 +9,8 @@
     "test": "scripts/test.sh",
     "lint": "scripts/lint.sh",
     "start": "scripts/start.sh",
-    "dev": "scripts/dev.sh"
+    "dev": "scripts/dev.sh",
+    "build": "scripts/build.sh"
   },
   "repository": {
     "type": "git",
