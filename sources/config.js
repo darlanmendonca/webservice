@@ -18,7 +18,7 @@ const configs = {
     },
   },
   production: {
-    port: 3000,
+    port: 4000,
     database: 'webservice',
     secret: 'tkta0kjxjkur3sor',
     token: {
