@@ -2,7 +2,7 @@ import shellArguments from 'shell-arguments'
 
 const configs = {
   test: {
-    port: 4000,
+    port: 5000,
     database: 'webservice_test',
     secret: 'kljj4hhsdih.8j32h',
     token: {
@@ -18,7 +18,7 @@ const configs = {
     },
   },
   production: {
-    port: 4000,
+    port: 3000,
     database: 'webservice',
     secret: 'tkta0kjxjkur3sor',
     token: {
