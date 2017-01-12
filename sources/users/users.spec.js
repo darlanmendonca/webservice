@@ -254,7 +254,7 @@ describe('Users', () => {
         .field('firstname', user.firstname + 's')
         .end((err, res) => {
           expect(res).to.be.json
-          expect(res).to.have.status(201)
+          expect(res).to.have.status(200)
           expect(res.body).to.have.property('message')
           done()
         })

@@ -65,7 +65,7 @@ function edit(req, res) {
       return res.status(400).json({ message: 'not found' });
     }
 
-    res.status(201).json({ message: 'updated' });
+    res.json({ message: 'updated' });
   });
 }
 

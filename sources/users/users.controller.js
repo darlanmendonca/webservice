@@ -54,9 +54,7 @@ function edit(req, res) {
           .json({message: 'not found'})
       }
 
-      res
-        .status(201)
-        .json({message: 'updated'})
+      res.json({message: 'updated'})
     })
 }
 
