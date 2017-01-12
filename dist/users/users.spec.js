@@ -204,4 +204,15 @@ describe('Users', function () {
       });
     });
   });
+
+  describe('.edit - PUT /users/:id', function () {
+    it('edit', function (done) {
+      (0, _chai.request)(_index2.default).put('/users/' + _usersMock2.default.id).set('authorization', _usersMock2.default.token).field('firstname', _usersMock2.default.firstname + 's').end(function (err, res) {
+        (0, _chai.expect)(res).to.be.json;
+        (0, _chai.expect)(res).to.have.status(201);
+        (0, _chai.expect)(res.body).to.have.property('message');
+        done();
+      });
+    });
+  });
 });

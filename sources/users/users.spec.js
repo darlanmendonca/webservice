@@ -245,4 +245,19 @@ describe('Users', () => {
         })
     })
   })
+
+  describe('.edit - PUT /users/:id', () => {
+    it('edit', (done) => {
+      request(webservice)
+        .put(`/users/${user.id}`)
+        .set('authorization', user.token)
+        .field('firstname', user.firstname + 's')
+        .end((err, res) => {
+          expect(res).to.be.json
+          expect(res).to.have.status(201)
+          expect(res.body).to.have.property('message')
+          done()
+        })
+    })
+  })
 })

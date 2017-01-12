@@ -22,6 +22,6 @@ router.use(_validateController2.default.token);
 
 router.route('/users').get(_usersController2.default.list).post(_usersController2.default.create);
 
-router.route('/users/:id').get(_usersController2.default.get).delete(_usersController2.default.disable);
+router.route('/users/:id').get(_usersController2.default.get).put(_usersController2.default.edit).delete(_usersController2.default.disable);
 
 module.exports = router;

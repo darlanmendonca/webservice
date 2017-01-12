@@ -8,6 +8,7 @@ module.exports = {
   list,
   get,
   create,
+  edit,
   disable,
   authenticate,
 }
@@ -40,12 +41,31 @@ function create(req, res) {
     })
 }
 
+function edit(req, res) {
+  const username = req.params.username
+
+  Users
+    // .findOneAndUpdate({username}, {$set: req.body})
+    .findByIdAndUpdate(req.params.id, {$set: req.body})
+    .then(function(user) {
+      if (!user) {
+        return res
+          .status(400)
+          .json({message: 'not found'})
+      }
+
+      res
+        .status(201)
+        .json({message: 'updated'})
+    })
+}
+
 function disable(req, res) {
   const username = req.params.username
 
   Users
-    .findOneAndUpdate({username}, {$set: {active: false}})
-    // .findByIdAndUpdate(req.params.id, {$set: {active: false}})
+    // .findOneAndUpdate({username}, {$set: {active: false}})
+    .findByIdAndUpdate(req.params.id, {$set: {active: false}})
     .then(() => res.json({message: 'deleted'}))
 }
 

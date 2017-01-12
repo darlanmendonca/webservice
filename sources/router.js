@@ -20,6 +20,7 @@ router
 router
   .route('/users/:id')
   .get(users.get)
+  .put(users.edit)
   .delete(users.disable)
 
 module.exports = router

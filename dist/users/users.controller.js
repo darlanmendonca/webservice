@@ -22,12 +22,17 @@ module.exports = {
   list: list,
   get: get,
   create: create,
+  edit: edit,
   disable: disable,
   authenticate: authenticate
 };
 
 function list(req, res) {
-  _usersModel2.default.find({ active: { $ne: false } }).then(function (users) {
+  _usersModel2.default
+  // .findOneAndUpdate({username}, {$set: req.body})
+
+  // .findOneAndUpdate({username}, {$set: {active: false}})
+  .find({ active: { $ne: false } }).then(function (users) {
     return res.json(users);
   });
 }
@@ -52,12 +57,22 @@ function create(req, res) {
   });
 }
 
+function edit(req, res) {
+  var username = req.params.username;
+
+  _usersModel2.default.findByIdAndUpdate(req.params.id, { $set: req.body }).then(function (user) {
+    if (!user) {
+      return res.status(400).json({ message: 'not found' });
+    }
+
+    res.status(201).json({ message: 'updated' });
+  });
+}
+
 function disable(req, res) {
   var username = req.params.username;
 
-  _usersModel2.default.findOneAndUpdate({ username: username }, { $set: { active: false } })
-  // .findByIdAndUpdate(req.params.id, {$set: {active: false}})
-  .then(function () {
+  _usersModel2.default.findByIdAndUpdate(req.params.id, { $set: { active: false } }).then(function () {
     return res.json({ message: 'deleted' });
   });
 }
