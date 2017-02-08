@@ -32,8 +32,10 @@ function list(req, res) {
   // .findOneAndUpdate({username}, {$set: req.body})
 
   // .findOneAndUpdate({username}, {$set: {active: false}})
-  .find({ active: { $ne: false } }).then(function (users) {
-    return res.json(users);
+  .find({ active: { $ne: false } })
+  // .then(users => res.json(users))
+  .then(function (users) {
+    users.length ? res.json(users) : res.status(204).json(users);
   });
 }
 
@@ -43,7 +45,7 @@ function get(req, res) {
   var query = (0, _validObjectid.isValid)(req.params.id) ? _usersModel2.default.findById(req.params.id) : _usersModel2.default.findOne({ username: username });
 
   query.then(function (user) {
-    return res.json(user);
+    user ? res.json(user) : res.status(404).json(user);
   });
 }
 
@@ -58,7 +60,7 @@ function create(req, res) {
 }
 
 function edit(req, res) {
-  var username = req.params.username;
+  // const username = req.params.username
 
   _usersModel2.default.findByIdAndUpdate(req.params.id, { $set: req.body }).then(function (user) {
     if (!user) {
@@ -70,7 +72,7 @@ function edit(req, res) {
 }
 
 function disable(req, res) {
-  var username = req.params.username;
+  // const username = req.params.username
 
   _usersModel2.default.findByIdAndUpdate(req.params.id, { $set: { active: false } }).then(function () {
     return res.json({ message: 'deleted' });

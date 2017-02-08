@@ -181,12 +181,11 @@ describe('Users', () => {
 
     it('user not found', (done) => {
       request(webservice)
-        .get(`/users/loremipsum`)
+        .get('/users/loremipsum')
         .set('authorization', user.token)
         .end((err, res) => {
           expect(res).to.be.json
-          // expect(res).to.have.status(204)
-          expect(res).to.have.status(200)
+          expect(res).to.have.status(404)
           expect(res.body).to.be.null
           done()
         })

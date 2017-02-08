@@ -16,7 +16,11 @@ module.exports = {
 function list(req, res) {
   Users
     .find({active: {$ne: false}})
-    .then(users => res.json(users))
+    .then(users => {
+      users.length
+        ? res.json(users)
+        : res.status(204).json(users)
+    })
 }
 
 function get(req, res) {
@@ -26,7 +30,11 @@ function get(req, res) {
     ? Users.findById(req.params.id)
     : Users.findOne({username})
 
-  query.then(user => res.json(user))
+  query.then(user => {
+    user
+      ? res.json(user)
+      : res.status(404).json(user)
+  })
 
 }
 
@@ -42,7 +50,7 @@ function create(req, res) {
 }
 
 function edit(req, res) {
-  const username = req.params.username
+  // const username = req.params.username
 
   Users
     // .findOneAndUpdate({username}, {$set: req.body})
@@ -59,7 +67,7 @@ function edit(req, res) {
 }
 
 function disable(req, res) {
-  const username = req.params.username
+  // const username = req.params.username
 
   Users
     // .findOneAndUpdate({username}, {$set: {active: false}})
