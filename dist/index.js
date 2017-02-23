@@ -12,9 +12,13 @@ var _bluebird = require('bluebird');
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
-var _router = require('./router.js');
+var _cors = require('cors');
 
-var _router2 = _interopRequireDefault(_router);
+var _cors2 = _interopRequireDefault(_cors);
+
+var _compression = require('compression');
+
+var _compression2 = _interopRequireDefault(_compression);
 
 var _methodOverride = require('method-override');
 
@@ -26,19 +30,15 @@ var _multer2 = _interopRequireDefault(_multer);
 
 var _bodyParser = require('body-parser');
 
-var _cors = require('cors');
-
-var _cors2 = _interopRequireDefault(_cors);
-
-var _compression = require('compression');
-
-var _compression2 = _interopRequireDefault(_compression);
-
-var _config = require('./config.js');
-
 var _filterHelper = require('./filter/filter.helper.js');
 
 var _filterHelper2 = _interopRequireDefault(_filterHelper);
+
+var _router = require('./router.js');
+
+var _router2 = _interopRequireDefault(_router);
+
+var _config = require('./config.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

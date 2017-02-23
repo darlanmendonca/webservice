@@ -1,14 +1,14 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import bluebird from 'bluebird'
-import router from './router.js'
+import cors from 'cors'
+import gzip from 'compression'
 import methodOverride from 'method-override'
 import multer from 'multer'
 import {urlencoded, json} from 'body-parser'
-import cors from 'cors'
-import gzip from 'compression'
-import {port, database} from './config.js'
 import filter from './filter/filter.helper.js'
+import router from './router.js'
+import {port, database} from './config.js'
 
 const webservice = express()
 

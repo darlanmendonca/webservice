@@ -32,9 +32,7 @@ function list(req, res) {
   // .findOneAndUpdate({username}, {$set: req.body})
 
   // .findOneAndUpdate({username}, {$set: {active: false}})
-  .find({ active: { $ne: false } })
-  // .then(users => res.json(users))
-  .then(function (users) {
+  .find({ active: { $ne: false } }).then(function (users) {
     users.length ? res.json(users) : res.status(204).json(users);
   });
 }
