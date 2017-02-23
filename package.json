@@ -42,6 +42,7 @@
     "valid-objectid": "0.0.2"
   },
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-watch": "^2.0.3",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
