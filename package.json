@@ -2,7 +2,7 @@
   "name": "webservice",
   "private": true,
   "version": "0.0.1",
-  "description": "atividade de webservice",
+  "description": "webservice prototype experiment",
   "main": "sources/index.js",
   "scripts": {
     "pretest": "scripts/lint.sh",

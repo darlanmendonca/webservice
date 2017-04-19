@@ -1,9 +1,9 @@
 # webservice
 
-example of webservice, featuring:
+webservice prototype experiment using
 
 - express 4
-- require/force patterns linting scripts
+- require/force patterns, linting scripts
 - writed in es6
 - entity architecture
 - authentication with jsonwebtoken
