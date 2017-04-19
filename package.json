@@ -20,6 +20,9 @@
     "url": "https://github.com/darlanmendonca/webservice/issues"
   },
   "homepage": "https://github.com/darlanmendonca/webservice#readme",
+  "engines": {
+    "node": ">=0.7.0"
+  },
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
