@@ -23,7 +23,7 @@ module.exports = {
     quotes: [required, 'single'],
     'object-curly-spacing': [required, 'never'],
     'array-bracket-spacing': [required, 'never'],
-    // 'space-infix-ops': [required, {int32Hint: false}],
+    'space-infix-ops': [required, {int32Hint: false}],
     'no-var': required,
     strict: required,
     'no-undef': required,
