@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/darlanmendonca/webservice.svg?branch=master)](https://travis-ci.org/darlanmendonca/webservice)
+[![Coverage Status](https://coveralls.io/repos/darlanmendonca/webservice/badge.svg?branch=master&service=github)](https://coveralls.io/github/darlanmendonca/webservice?branch=master)
+
 # webservice
 
 webservice prototype experiment using
