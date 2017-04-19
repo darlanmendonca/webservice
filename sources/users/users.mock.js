@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken'
-import {secret, token as tokenSets} from '../config.js'
+const jwt = require('jsonwebtoken')
+const {secret, token: tokenSets} = require('../config.js')
 
 const mock = {
   username: 'johnsnow',

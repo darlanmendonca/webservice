@@ -1,4 +1,4 @@
-import shellArguments from 'shell-arguments'
+const shellArguments = require('shell-arguments')
 
 const configs = {
   test: {

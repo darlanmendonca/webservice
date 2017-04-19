@@ -1,6 +1,6 @@
-import {isValid as isValidId} from 'valid-objectid'
-import jwt from 'jsonwebtoken'
-import {secret} from '../config.js'
+const {isValid: isValidId} = require('valid-objectid')
+const jwt = require('jsonwebtoken')
+const {secret} = require('../config.js')
 
 module.exports = {
   id,

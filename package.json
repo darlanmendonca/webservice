@@ -3,14 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "description": "atividade de webservice",
-  "main": "dist/index.js",
+  "main": "sources/index.js",
   "scripts": {
-    "pretest": "scripts/lint.sh && scripts/build.sh",
+    "pretest": "scripts/lint.sh",
     "test": "scripts/test.sh",
     "lint": "scripts/lint.sh",
-    "start": "scripts/start.sh",
-    "dev": "scripts/dev.sh",
-    "build": "scripts/build.sh"
+    "start": "scripts/start.sh"
   },
   "repository": {
     "type": "git",

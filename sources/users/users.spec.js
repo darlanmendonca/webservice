@@ -1,13 +1,6 @@
-import webservice from '../index.js'
-import chai from 'chai'
-import chaiHttp from 'chai-http'
-import chaiThings from 'chai-things'
-import {request, expect} from 'chai'
-import user from './users.mock.js'
-
-chai
-  .use(chaiHttp)
-  .use(chaiThings)
+const webservice = require('../index.js')
+const {request, expect} = require('chai')
+const user = require('./users.mock.js')
 
 describe('Users', () => {
   describe('.authenticate - POST /users/authenticate', () => {

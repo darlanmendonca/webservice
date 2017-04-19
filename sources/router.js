@@ -1,6 +1,6 @@
-import {Router} from 'express'
-import users from './users/users.controller.js'
-import validate from './validate/validate.controller.js'
+const {Router} = require('express')
+const users = require('./users/users.controller.js')
+const validate = require('./validate/validate.controller.js')
 
 const router = Router()
 

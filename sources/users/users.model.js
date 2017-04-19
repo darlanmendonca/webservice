@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import privates from 'mongoose-private'
-import encode from '../encode/encode.helper.js'
+const mongoose = require('mongoose')
+const privates = require('mongoose-private')
+const encode = require('../encode/encode.helper.js')
 
 const schema = new mongoose.Schema({
   username: {type: String, trim: true, lowercase: true, required: true, unique: true},

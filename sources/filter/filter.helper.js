@@ -1,4 +1,6 @@
-module.exports = function (req, res, next) {
+module.exports = filter
+
+function filter(req, res, next) {
   // return next()
   const resJson = res.json
   res.json = fielterFields

@@ -1,8 +1,8 @@
-import Users from './users.model.js'
-import encode from '../encode/encode.helper.js'
-import jwt from 'jsonwebtoken'
-import {isValid as isValidId} from 'valid-objectid'
-import {secret, token as tokenSets} from '../config.js'
+const Users = require('./users.model.js')
+const encode = require('../encode/encode.helper.js')
+const jwt = require('jsonwebtoken')
+const {isValid: isValidId} = require('valid-objectid')
+const {secret, token: tokenSets} = require('../config.js')
 
 module.exports = {
   list,

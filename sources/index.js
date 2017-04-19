@@ -1,16 +1,14 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import bluebird from 'bluebird'
-import cors from 'cors'
-import gzip from 'compression'
-import methodOverride from 'method-override'
-import multer from 'multer'
-import {urlencoded, json} from 'body-parser'
-import filter from './filter/filter.helper.js'
-import router from './router.js'
-import {port, database} from './config.js'
+const mongoose = require('mongoose')
+const cors = require('cors')
+const gzip = require('compression')
+const methodOverride = require('method-override')
+const multer = require('multer')
+const {urlencoded, json} = require('body-parser')
+const filter = require('./filter/filter.helper.js')
+const router = require('./router.js')
+const {port, database} = require('./config.js')
 
-const webservice = express()
+const webservice = require('express')()
 
 webservice
   .use(cors())
@@ -22,7 +20,7 @@ webservice
   .use(filter)
   .use(router)
 
-mongoose.Promise = bluebird
+mongoose.Promise = require('bluebird')
 
 mongoose
   .connect(`mongodb://localhost/${database}`)
