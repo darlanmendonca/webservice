@@ -1,5 +1,3 @@
-const shellArguments = require('shell-arguments')
-
 const configs = {
   test: {
     port: 5000,
@@ -27,6 +25,6 @@ const configs = {
   },
 }
 
-const env = shellArguments.env || process.env.NODE_ENV || 'production'
+const env = process.env.NODE_ENV || 'production'
 
 module.exports = configs[env]

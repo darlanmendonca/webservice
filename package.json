@@ -31,7 +31,6 @@
     "mongoose": "^4.7.0",
     "mongoose-private": "^0.1.3",
     "multer": "^1.2.0",
-    "shell-arguments": "^1.2.3",
     "valid-objectid": "0.0.2"
   },
   "devDependencies": {
