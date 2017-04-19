@@ -1,0 +1,5 @@
+language: node_js
+node_js:
+  - "node"
+env:
+  - EXPORT_COVERAGE=1 CXX=g++-4.8
