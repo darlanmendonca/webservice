@@ -30,7 +30,6 @@
     "method-override": "^2.3.7",
     "mongoose": "^4.7.0",
     "mongoose-private": "^0.1.3",
-    "mpromise": "^0.5.5",
     "multer": "^1.2.0",
     "shell-arguments": "^1.2.3",
     "valid-objectid": "0.0.2"
